@@ -1,1 +1,1 @@
-Respository containing all the GitHub Actions course material and notes. 
+Respository containing all the GitHub Actions course material and notes. This has been edited.
