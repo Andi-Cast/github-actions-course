@@ -4,7 +4,7 @@ on:
     push:
     workflow_dispatch:
         inputs:
-            dubug:
+            debug:
                 type: boolean
                 default: false
 
@@ -18,3 +18,7 @@ jobs:
                 echo "Branch/Tag Ref: ${{ github.ref }}"
                 echo "Commit SHA: ${{ github.sha }}"
                 echo "Runner OS: ${{ runner.os }}"
+            - name: '[debug] Print when triggered from main'
+              run: echo "This run was triggered from the main branch."
+            - name: Greeting
+              run: echo "Hello World!" 
