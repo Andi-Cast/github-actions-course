@@ -2,6 +2,7 @@ name: 06 - Contexts
 
 on:
     push:
+    workflow_dispatch:
 
 jobs:
     echo-data:
@@ -16,3 +17,6 @@ jobs:
                 echo "Workflow: ${{ github.workflow }}"
                 echo "Run ID: ${{ github.run_id }}"
                 echo "Run number: ${{ github.run_number }}"
+            - name: Retrieve Variable
+              run: |
+                echo "Variable MY_VAR is set to: ${{ env.MY_VAR }}"
