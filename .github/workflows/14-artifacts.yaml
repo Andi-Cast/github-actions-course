@@ -3,6 +3,10 @@ name: 14 - Artifacts
 on: 
     workflow_dispatch:
 
+env:
+    build-artifact-key: app-${{ github.sha }}
+    test-report-artifact-key: test-reports-${{ github.sha }}
+
 jobs:
     test-build:
         runs-on: ubuntu-latest
@@ -26,13 +30,18 @@ jobs:
               if: steps.cache.outputs.cache-hit != 'true'
               run: npm install
             - name: Unit Tests
-              run: npm test 
+              run: npm test -- --coverage
+            - name: Upload Test Reports
+              uses: actions/upload-artifact@v4
+              with:
+                name: ${{ env.test-report-artifact-key }}
+                path: 14-artifacts/react-app/coverage
             - name: Build Code
               run: npm run build
             - name: Upload Build Files
               uses: actions/upload-artifact@v4
               with:
-                name: app
+                name: ${{ env.build-artifact-key }}
                 path: 14-artifacts/react-app/build
               
     deploy: 
@@ -42,7 +51,7 @@ jobs:
             - name: Download Build Artifact
               uses: actions/download-artifact@v4
               with:
-                name: app
+                name: ${{ env.build-artifact-key }}
                 path: build 
             - name: Show Folder Structure
               run: ls -R
