@@ -9,7 +9,7 @@ inputs:
     description: Maximum number of ping attempts
     required: false
     default: '10'
-  deplay:
+  delay:
     description: Delay between ping attempts in seconds
     required: false
     default: '5'
