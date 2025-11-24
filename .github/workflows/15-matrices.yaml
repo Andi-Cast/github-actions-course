@@ -41,10 +41,14 @@ jobs:
                 size: [small, large]
                 include:
                     - opacity: 0.5
-                      color: green
-                      shape: circle
                     - color: red
                       shape: triangle
+                exclude:
+                    #- opacity: 75 #no combination with opacity 75 bc exclude runs before include
+                    - color: green
+                      shape: circle
+                      size: large
+
         steps: 
             - name: Display Combination
               run: echo "${{ matrix.color }} - ${{ matrix.shape }} - ${{ matrix.size }} - ${{ matrix.opacity }}"
