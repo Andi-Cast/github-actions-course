@@ -1,0 +1,31 @@
+name: Cache Node and NPM Dependencies
+description: Caches Node.js and NPM dependencies to speed up workflow runs.
+
+inputs:
+  node-version:
+    description: 'The Node.js version to use'
+    default: 20.x
+    required: true
+  working-directory:
+    description: 'The working directory where package.json is located'
+    default: .
+    required: false
+
+runs: 
+  using: composite
+  steps:
+    - name: Setup Node.js version ${{ inputs.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ inputs.node-version }}
+    - name: Cache NPM dependencies
+      id: cache
+      uses: actions/cache@v3
+      with:
+        path: $ {{ inputs.working-directory }}
+        key: node-modules-${{ hashFiles('${{ inputs.working_directory }}/package-lock.json') }}
+    - name: Install Dependencies
+      if: ${{ steps.cache.outputs.cache-hit != 'true' }}
+      run: npm install
+      shell: bash
+      working-directory: ${{ inputs.working-directory }}
