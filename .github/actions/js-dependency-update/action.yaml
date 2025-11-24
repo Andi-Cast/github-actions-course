@@ -1,0 +1,7 @@
+name: Update NPM Dependencies
+description: Updates NPM dependencies to their latest versions.
+
+runs:
+  using: node20
+  main: index.js
+  
