@@ -1,6 +1,25 @@
 name: Update NPM Dependencies
 description: Updates NPM dependencies to their latest versions.
 
+inputs:
+  base-branch:
+    description: 'The base branch to create the update PR against.'
+    default: main
+    required: false
+  target-branch:
+    description: 'The branch to use for the dependency update.'
+    default: update-dependencies
+    required: false
+  working-directory:
+    description: 'The working directory where package.json is located.'
+    required: true
+  gh-token:
+    description: "GitHub token for authentication."
+    required: true
+  debug:
+    description: 'Enable debug logging.'
+    default: 'false'
+
 runs:
   using: node20
   main: index.js
