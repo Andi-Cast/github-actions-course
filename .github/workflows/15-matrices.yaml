@@ -30,3 +30,19 @@ jobs:
               run: exit 1
             - name: Perform Some Test
               run: echo "Running tests on Node.js version ${{ matrix.node-version }} on OS ${{ matrix.os }}"
+
+    include-example:
+        name: ${{ matrix.color }} - ${{ matrix.shape }} - ${{ matrix.size }}
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                color: [red, green]
+                shape: [circle, square]
+                size: [small, large]
+                inlude:
+                    - color: red
+                      shape: triangle
+        steps: 
+            - name: Display Combination
+              run: echo "${{ matrix.color }} - ${{ matrix.shape }} - ${{ matrix.size }}"
+        
