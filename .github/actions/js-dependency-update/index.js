@@ -2,10 +2,10 @@ const core = require('@actions/core');
 const exec = require('@actions/exec');
 
 const validateBranchName = ({ branchName }) => { 
-    /^[a-zA-Z0-9._/-]+$/.test(branchName)
+   return /^[a-zA-Z0-9._/-]+$/.test(branchName)
 }
 const validateDirectoryName = ({ directoryName }) => { 
-    /^[a-zA-Z0-9._/-]+$/.test(directoryName)
+    return /^[a-zA-Z0-9._/-]+$/.test(directoryName)
 }
 
 async function run() {
