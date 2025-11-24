@@ -4,7 +4,7 @@ description: Updates NPM dependencies to their latest versions.
 inputs:
   base-branch:
     description: 'The base branch to create the update PR against.'
-    default: main
+    default: 'main'
     required: false
   target-branch:
     description: 'The branch to use for the dependency update.'
