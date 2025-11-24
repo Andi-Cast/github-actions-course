@@ -27,7 +27,7 @@ runs:
       uses: actions/cache@v3
       with:
         path: $ {{ inputs.working-directory }}
-        key: node-modules-${{ hashFiles(format('{0}/{1}', inputs.working_directory, 'package-lock.json')) }}
+        key: node-modules-${{ inputs.target-env }}-${{ hashFiles(format('{0}/{1}', inputs.working_directory, 'package-lock.json')) }}
     - name: Install Dependencies
       if: ${{ steps.cache.outputs.cache-hit != 'true' }}
       run: ${{ inputs.target-env == 'development' && 'npm install' || 'npm install --omit=dev' }}
