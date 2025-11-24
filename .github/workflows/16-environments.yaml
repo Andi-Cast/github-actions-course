@@ -16,4 +16,4 @@ jobs:
         steps:
             - name: Echo Vars
               run: |
-                echo "Env Variable: ${{ env}}
+                echo "Env Variable: ${{ env.my-env-value }}"
