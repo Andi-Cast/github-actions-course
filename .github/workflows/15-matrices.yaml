@@ -39,7 +39,7 @@ jobs:
                 color: [red, green]
                 shape: [circle, square]
                 size: [small, large]
-                inlude:
+                include:
                     - opacity: 0.5
                       color: green
                       shape: circle
