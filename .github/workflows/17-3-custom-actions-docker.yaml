@@ -6,6 +6,14 @@ on:
             url:
                 type: string
                 default: 'https://www.google.com'
+            max_trails:
+                description: 'Maximum number of ping attempts'
+                default: '10'
+                required: false
+            deplay:
+                description: 'Delay between ping attempts in seconds'
+                default: '10'
+                required: false
 
 jobs: 
     ping-url:
@@ -16,3 +24,5 @@ jobs:
               uses: ./.github/actions/docker-ping-url
               with:
                   url: ${{ inputs.url }}
+                  max_trails: ${{ inputs.max_trails }}
+                  deplay: ${{ inputs.deplay }}
