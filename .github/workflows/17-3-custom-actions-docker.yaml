@@ -6,7 +6,7 @@ on:
             url:
                 type: string
                 default: 'https://www.google.com'
-            max_trails:
+            max_trials:
                 description: 'Maximum number of ping attempts'
                 default: '10'
                 required: false
@@ -24,5 +24,5 @@ jobs:
               uses: ./.github/actions/docker-ping-url
               with:
                   url: ${{ inputs.url }}
-                  max_trails: ${{ inputs.max_trails }}
+                  max_trials: ${{ inputs.max_trials }}
                   deplay: ${{ inputs.deplay }}
