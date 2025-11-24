@@ -10,6 +10,11 @@ const validateDirectoryName = ({ directoryName }) => {
     return /^[a-zA-Z0-9._/-]+$/.test(directoryName)
 }
 
+const setupGit = async () => {
+    await exec.exec('git config --global user.name "gh-automation"');
+    await exec.exec('git config --global user.email "gh-automation@email.com"');
+}
+
 async function run() {
   const baseBranch = core.getInput('base-branch', { required: true });
   const targetbranch = core.getInput('target-branch', { required: true });
@@ -47,8 +52,7 @@ async function run() {
 
   if (gitStatus.stdout.length > 0) { 
     core.info('[js-dependency-update] : Changes detected, preparing to commit and push.');
-    await exec.exec('git config --global user.name "gh-automation"');
-    await exec.exec('git config --global user.email "gh-automation@email.com"');
+    await setupGit();
     await exec.exec('git checkout -b ' + targetbranch, [], { ...commonExecOpts });
     await exec.exec('git add package.json package-lock.json', [], { ...commonExecOpts });
     await exec.exec('git commit -m "chore: update dependencies"' + targetbranch, [], { ...commonExecOpts });
