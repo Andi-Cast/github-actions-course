@@ -57,7 +57,7 @@ async function run() {
     const octokit = github.getOctokit(ghToken);
 
     try {
-        await octokit.pulls.rest.pulls.create({
+        await octokit.rest.pulls.create({
             owner: github.context.repo.owner,
             repo: github.context.repo.repo,
             title: 'Update NPM dependencies',
