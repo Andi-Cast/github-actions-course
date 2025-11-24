@@ -5,7 +5,7 @@ inputs:
   url:
     description: URL to Ping 
     required: true
-  max_trails:
+  max_trials:
     description: Maximum number of ping attempts
     required: false
     default: '10'
