@@ -1,0 +1,19 @@
+name: Ping URL
+description: Ping a specified URL until max attempts are reached or a successful response is received.
+
+inputs:
+  url:
+    description: URL to Ping 
+    required: true
+  max_trails:
+    description: Maximum number of ping attempts
+    required: false
+    default: '10'
+  deplay:
+    description: Delay between ping attempts in seconds
+    required: false
+    default: '5'
+
+runs:
+  using: docker
+  image: Dockerfile 
