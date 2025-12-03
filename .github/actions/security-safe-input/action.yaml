@@ -1,0 +1,11 @@
+name: Safe Title Check
+decription: Safely checks the title of a PR
+
+inputs:
+  pr_title:
+    decription: 'The title of the pull request'
+    required: true
+
+runs:
+  using: node20
+  main: index.js
